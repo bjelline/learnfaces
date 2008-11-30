@@ -1,0 +1,20 @@
+<h1>Verwaltung der Photos</h1>
+
+<% for photo in @photos %>
+  <div class="photo <% if photo.female %>f<% else %>m<% end %>">
+	  <img src="/images/photos/<%=h photo.filename %>" />
+	  <span class="name"><%=h photo.firstname %> <%=h photo.lastname %></span>
+	  <span class="data"><%=h photo.school %><%=h photo.year %>
+	  <%= photo.major %> 
+	  </span>
+	  <span class="navi">
+		  <%= link_to 'Show', photo %>
+		  <%= link_to 'Edit', edit_photo_path(photo) %>
+		  <%= link_to 'Destroy', photo, :confirm => 'Are you sure?', :method => :delete %>
+	  </span>
+  </div>
+<% end %>
+
+<br />
+
+<%= link_to 'New photo', new_photo_path %>

@@ -1,0 +1,23 @@
+<h1>New photo</h1>
+
+<% form_for(@photo) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :filename %><br />
+    <%= f.text_field :filename %>
+  </p>
+  <p>
+    <%= f.label :vorname %><br />
+    <%= f.text_field :vorname %>
+  </p>
+  <p>
+    <%= f.label :nachname %><br />
+    <%= f.text_field :nachname %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', photos_path %>

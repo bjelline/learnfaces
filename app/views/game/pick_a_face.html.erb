@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Games: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'scaffold' %>
+  <style>
+	  .do_javascript { display: none }
+  </style>
+  <script src="/javascripts/jquery.js"></script>
+  <script>
+    $(document).ready(function(){  
+	    $('.no_javascript').hide();
+	    $('.do_javascript').show();
+	    $('.photo').click(function(){
+		$(this).find('.answer').css('visibility','visible');
+	});
+    });
+  </script>
+</head>
+<body>
+<h1>Pick a Face</h1>
+
+<div  class="no_javascript">
+	Achtung: diese Spiel funktioniert nur mit Javascript! 
+	Wenn diese Meldung erscheint ist Javascript deaktiviert!
+</div>
+
+
+<div class="question do_javascript">
+	<%= @target.firstname[0,1] %>.<%= @target.lastname %> 
+</div>
+
+<% for photo in @choice %>
+  <div class="photo" id="photo_<%= photo.id %>">
+	  <img src="/images/photos/<%= photo.filename %>" />
+	  <span class="do_javascript answer" style="visibility:hidden">
+		  <% if @target.id == photo.id %>
+			  Ja, das ist 
+		  <% else %>
+			  Nein, das ist 
+		  <% end %>
+		  <span class="name">
+		  <%= photo.firstname %> <%= photo.lastname %> 
+		  </span>
+		  <span class="data">
+		  <%= photo.school %><%= photo.year %> 
+		  </span>
+	  </span>
+  </div>
+
+<% end %>
+
+
+</body>
+</html>

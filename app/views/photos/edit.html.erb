@@ -1,0 +1,41 @@
+<h1>Editing photo</h1>
+
+<% form_for(@photo) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :filename %><br />
+    <%= f.text_field :filename %>
+  </p>
+  <p>
+    <%= f.label :firstname %><br />
+    <%= f.text_field :firstname %>
+  </p>
+  <p>
+    <%= f.label :lastname %><br />
+    <%= f.text_field :lastname %>
+  </p>
+  <p>
+    <%= f.label :female %><br />
+    <%= f.text_field :female %>
+  </p>
+  <p>
+    <%= f.label :school %><br />
+    <%= f.text_field :school %>
+  </p>
+  <p>
+    <%= f.label :year %><br />
+    <%= f.text_field :year %>
+  </p>
+  <p>
+    <%= f.label :major %><br />
+    <%= f.text_field :major %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @photo %> |
+<%= link_to 'Back', photos_path %>

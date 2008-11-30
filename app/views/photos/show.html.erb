@@ -1,0 +1,15 @@
+<p>
+<img src="/images/photos/<%=h @photo.filename %>" />
+</p>
+
+<p>
+  <%=h @photo.firstname %>
+  <%=h @photo.lastname %>
+</p>
+
+<p>
+</p>
+
+
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Back', photos_path %>
