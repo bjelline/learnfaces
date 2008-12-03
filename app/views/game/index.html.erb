@@ -3,8 +3,8 @@
 <p>Folgende Spiele können Sie spielen:</p>
 
 <ul>
-	<li><a href="/game/pick_a_face">Pick a Face</a> - ein Name wird angezeigt, wählen Sie eines von 5 Gesichtern</li>
+	<li><%= link_to "Pick a Face", :action => "pick_a_face"  %> - ein Name wird angezeigt, wählen Sie eines von 5 Gesichtern</li>
 </ul>
 
 
-<p><a href="/photos/">backend</a></p>
+<p><%= link_to "backend", :action => "index" , :controller => "photos" %></p>
