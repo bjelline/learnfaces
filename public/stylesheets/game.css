@@ -1,0 +1,40 @@
+h1 {
+	margin: 10px;
+
+}
+
+p { margin: 10px; }
+
+.question {
+	margin: 10px;
+	font-size: large;
+}
+
+div.photo.f { background-color: rgb(255,200,200) }
+div.photo.m { background-color: rgb(200,200,255) }
+
+div.photo {
+	float: left;
+	width: 160px;
+	margin: 10px;
+	padding: 10px;
+	border: 2px #ddd solid;
+	text-align: center;
+}
+
+div.photo span.name,
+div.photo span.data
+{ display:block}
+
+
+div.score {
+	width: 150px;
+	float: right;
+	border: 1px red solid;
+	background-color: yellow;
+	padding:5px;
+}
+
+div.score span {
+	display: block;
+}

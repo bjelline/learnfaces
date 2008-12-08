@@ -7,22 +7,41 @@
   <title>Games: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold' %>
   <style>
-	  .do_javascript { display: none }
+    .do_javascript { display: none }
+    .next { clear:both; }
+    form { display: inline; }
   </style>
   <script src="/javascripts/jquery.js"></script>
   <script>
+    var tries = 0;
+    function save() {
+        location="?tries=" + tries;
+    }
     $(document).ready(function(){  
 	    $('.no_javascript').hide();
+	    $('.answer').hide();
+	    $('.next').hide();
 	    $('.do_javascript').show();
 	    $('.photo').click(function(){
-	      $(this).find('.answer').css('visibility','visible');
+	        $('.points').text("....loading....");
+		$(this).find('.answer').show('slow');
+		$.getJSON("pick_a_face_ajax?pick=" + $(this).attr("id").substr(6), function(data) {
+		  tries = data;
+		  if( data[0] ) {
+		    $('.points').text("Points: " + data[1]);
+		    $('.next').show();
+		    // if( confirm("Sehr gut!  Noch ein Spiel?") ) { location="pick_a_face_ajax"; } else { location="index"; }
+		  } else {
+		        $('.points').text("Points: " + data[1]);
+		  }
+		});
 	    });
     });
   </script>
 </head>
 <body>
 <h1>Pick a Face</h1>
-<p>Trainings Modus - es werden keine Punkte gez&auml;hlt</p>
+
 <div  class="no_javascript">
 	Achtung: diese Spiel funktioniert nur mit Javascript! 
 	Wenn diese Meldung erscheint ist Javascript deaktiviert!
@@ -37,7 +56,7 @@
 <% for photo in @choice %>
 	<div class="photo <%= @target.id == photo.id ? "richtig" : "falsch" %>" id="photo_<%= photo.id %>">
 	  <img src="/images/photos/<%= photo.filename %>" />
-	  <span class="do_javascript answer" style="visibility:hidden">
+	  <span class="answer">
 		  <% if @target.id == photo.id %>
 			  Ja, das ist 
 		  <% else %>
@@ -54,9 +73,16 @@
 
 <% end %>
 
-<p style="clear:both;">
-  <%= link_to "zur&uuml;ck", :controller => "game", :action => "index" %>
-</p>
+<div  class="next">
+<form>
+  <%= radio_button_tag "school", "mma", params["school"] == "mma" %> nur MMA
+  <%= radio_button_tag "school", "mmt", params["school"] == "mmt" %> nur MMT
+  <%= radio_button_tag "school", "",    params["school"].blank? %> beide
+  <input type="submit" value="noch ein Spiel" />
+</form>
+<form action="index">
+  <input type="submit" value="zur&uuml;ck" />
+</form>
 
 </body>
 </html>

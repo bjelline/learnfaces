@@ -1,4 +1,7 @@
 class PhotosController < ApplicationController
+  before_filter :admin_only, :except => [:index, :show]
+
+
   # GET /photos
   # GET /photos.xml
   def index
@@ -80,6 +83,14 @@ class PhotosController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(photos_url) }
       format.xml  { head :ok }
+    end
+  end
+
+private
+
+  def admin_only
+    if ! @current_player.is_admin?
+      raise "Only for Admins, not for " + @current_player.username
     end
   end
 end

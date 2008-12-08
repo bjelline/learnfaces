@@ -9,12 +9,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081130190231) do
+ActiveRecord::Schema.define(:version => 20081208095157) do
 
-  create_table "people", :force => true do |t|
+  create_table "games", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "games", ["name"], :name => "index_games_on_name"
+
+  create_table "highscores", :force => true do |t|
+    t.integer  "game_id"
+    t.integer  "player_id"
+    t.integer  "score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "highscores", ["game_id"], :name => "index_highscores_on_game_id"
+  add_index "highscores", ["player_id"], :name => "index_highscores_on_player_id"
 
   create_table "photos", :force => true do |t|
     t.string   "filename"
@@ -26,6 +40,21 @@ ActiveRecord::Schema.define(:version => 20081130190231) do
     t.string   "school"
     t.string   "year"
     t.string   "major"
+  end
+
+  create_table "players", :force => true do |t|
+    t.string   "username"
+    t.datetime "lastlogin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "scores", :force => true do |t|
+    t.integer  "game_id"
+    t.integer  "player_id"
+    t.integer  "points"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

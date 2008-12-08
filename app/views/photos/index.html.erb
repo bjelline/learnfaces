@@ -8,9 +8,11 @@
 	  <%= photo.major %> 
 	  </span>
 	  <span class="navi">
-		  <%= link_to 'Show', photo %>
+	    <%= link_to 'Show', photo %>
+	    <% if @current_player.is_admin? %>
 		  <%= link_to 'Edit', edit_photo_path(photo) %>
 		  <%= link_to 'Destroy', photo, :confirm => 'Are you sure?', :method => :delete %>
+	    <% end %>
 	  </span>
   </div>
 <% end %>

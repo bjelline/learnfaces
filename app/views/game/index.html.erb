@@ -1,9 +1,14 @@
 <h1>Alle Spiele</h1>
 
-<p>Folgende Spiele können Sie spielen:</p>
+<p>Hallo <%= @current_player.username %>, folgende Spiele kannst Du spielen:</p>
 
 <ul>
-	<li><%= link_to "Pick a Face", :action => "pick_a_face"  %> - ein Name wird angezeigt, wählen Sie eines von 5 Gesichtern</li>
+	<li><%= link_to "Pick a Face - Trainings Modus", :action => "pick_a_face"  %> - ein Name wird angezeigt, wählen Sie eines von 5 Gesichtern</li>
+	<li><b>Pick a Face</b>
+	<%= link_to "nur mma", :action => "pick_a_face_ajax", :school => "mma"  %>,
+	<%= link_to "nur mmt", :action => "pick_a_face_ajax", :school => "mmt"  %>,
+	<%= link_to "beide",   :action => "pick_a_face_ajax" %>
+	- ein Name wird angezeigt, wählen Sie eines von 5 Gesichtern</li>
 </ul>
 
 
