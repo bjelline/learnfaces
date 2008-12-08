@@ -28407,3 +28407,45 @@ Rendering template within layouts/game
 Rendering game/index
   [4;36;1mPlayer Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `players`[0m
 Completed in 16ms (View: 16, DB: 0) | 200 OK [http://learnfaces.local/game/index]
+  [4;36;1mPhoto Load (93.0ms)[0m   [0;1mSELECT * FROM `photos` WHERE (not(id=4)and (school='mma')) ORDER BY rand() LIMIT 4[0m
+
+
+Processing GameController#index (for 127.0.0.1 at 2008-12-08 21:23:21) [GET]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPlayer Load (32.0ms)[0m   [0mSELECT * FROM `players` WHERE (username = 'bjelline') LIMIT 1[0m
+Rendering template within layouts/game
+Rendering game/index
+  [4;36;1mPlayer Columns (15.0ms)[0m   [0;1mSHOW FIELDS FROM `players`[0m
+Completed in 63ms (View: 31, DB: 32) | 200 OK [http://learnfaces.local/]
+
+
+Processing GameController#index (for 127.0.0.1 at 2008-12-08 21:34:18) [GET]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPlayer Load (0.0ms)[0m   [0mSELECT * FROM `players` WHERE (username = 'gast') LIMIT 1[0m
+Rendering template within layouts/game
+Rendering game/index
+  [4;36;1mPlayer Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `players`[0m
+Completed in 15ms (View: 15, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing GameController#index (for 127.0.0.1 at 2008-12-08 21:34:34) [GET]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPlayer Load (0.0ms)[0m   [0mSELECT * FROM `players` WHERE (username = 'gast') LIMIT 1[0m
+Rendering template within layouts/game
+Rendering game/index
+  [4;36;1mPlayer Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `players`[0m
+Completed in 15ms (View: 15, DB: 0) | 200 OK [http://learnfacesanon.local/]
+
+
+Processing GameController#index (for 127.0.0.1 at 2008-12-08 21:34:46) [GET]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPlayer Load (0.0ms)[0m   [0mSELECT * FROM `players` WHERE (username = 'bjelline') LIMIT 1[0m
+  [4;36;1mPlayer Columns (0.0ms)[0m   [0;1mSHOW FIELDS FROM `players`[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mPlayer Create (31.0ms)[0m   [0;1mINSERT INTO `players` (`updated_at`, `username`, `lastlogin`, `created_at`) VALUES('2008-12-08 20:34:46', 'bjelline', NULL, '2008-12-08 20:34:46')[0m
+  [4;35;1mSQL (31.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mCOMMIT[0m
+Rendering template within layouts/game
+Rendering game/index
+Completed in 94ms (View: 16, DB: 62) | 200 OK [http://learnfaces.local/]

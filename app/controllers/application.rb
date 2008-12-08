@@ -20,13 +20,19 @@ class ApplicationController < ActionController::Base
   end
 
   def initialize_player
-     @current_player = Player.find(:first, :conditions => ["username = ?", ENV['REMOTE_USER']]) 
-     if @current_player.nil?
+     if ENV['REMOTE_USER'].blank?
        @current_player = Player.find(:first, :conditions => ["username = ?", "gast"]) 
        if @current_player.nil?
 	 p = Player.create(:username => "gast")
 	 p.save
-	 @current_player = Player.find(:first, :conditions => ["username = ?", "gast"]) 
+	 @current_player = p
+       end
+     else
+       @current_player = Player.find(:first, :conditions => ["username = ?", ENV['REMOTE_USER']]) 
+       if @current_player.nil?
+	 p = Player.create(:username => ENV['REMOTE_USER'])
+	 p.save
+	 @current_player = p
        end
      end
   end
